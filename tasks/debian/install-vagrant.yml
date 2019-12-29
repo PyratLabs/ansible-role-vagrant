@@ -12,5 +12,5 @@
 
 - name: Ensure Vagrant is installed
   apt:
-    name: "{{ vagrant_release_baseurl }}/{{ vagrant_package_path }}"
-    state: installed
+    deb: "{{ vagrant_release_baseurl }}/{{ vagrant_package_path }}"
+    state: present

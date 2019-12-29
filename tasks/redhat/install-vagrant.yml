@@ -13,11 +13,11 @@
 - name: Ensure Vagrant is installed (YUM)
   yum:
     name: "{{ vagrant_release_baseurl }}/{{ vagrant_package_path }}"
-    state: installed
+    state: present
   when: ansible_pkg_mgr == "yum"
 
 - name: Ensure Vagrant is installed (DNF)
   dnf:
     name: "{{ vagrant_release_baseurl }}/{{ vagrant_package_path }}"
-    state: installed
+    state: present
   when: ansible_pkg_mgr == "dnf"
