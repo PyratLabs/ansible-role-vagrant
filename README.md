@@ -38,14 +38,6 @@ No dependencies on other roles.
 
 ## Example Playbook
 
-Example playbook for installing to single user:
-
-```yaml
-- hosts: workstation
-  roles:
-     - { role: xanmanning.vagrant, vagrant_version: 2.2.6 }
-```
-
 Example playbook for installing the latest vagrant version globally:
 
 ```yaml

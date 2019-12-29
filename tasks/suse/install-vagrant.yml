@@ -13,4 +13,5 @@
 - name: Ensure Vagrant is installed
   zypper:
     name: "{{ vagrant_release_baseurl }}/{{ vagrant_package_path }}"
+    disable_gpg_check: true
     state: present
