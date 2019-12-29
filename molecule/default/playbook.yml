@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  vars:
+    vagrant_install_os_dependencies: true
+    vagrant_projects:
+      - name: vagrant-examples
+        repo: git://github.com/patrickdlee/vagrant-examples
+  roles:
+    - role: xanmanning.vagrant

@@ -1,0 +1,16 @@
+---
+
+- import_tasks: pre-checks.yml
+
+- include_tasks: "{{ ansible_os_family | lower }}/install-os-dependencies.yml"
+  when: vagrant_install_os_dependencies is defined
+        and vagrant_install_os_dependencies
+
+- import_tasks: get-version.yml
+  when: vagrant_version is not defined or not vagrant_version
+
+- include_tasks: "{{ ansible_os_family | lower }}/install-vagrant.yml"
+
+- import_tasks: download-projects.yml
+  when: vagrant_projects is defined
+        and vagrant_projects | length >= 1

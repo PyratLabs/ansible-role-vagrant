@@ -1,0 +1,17 @@
+---
+
+- name: Check that git is installed
+  command: which git
+  register: vagrant_check_git_installed
+  failed_when: false
+  changed_when: false
+
+- name: Fail play if git is not installed
+  fail:
+    msg: git was not found and is required for downloading projects, please ensure this is installed.
+  when: vagrant_check_git_installed.rc > 0
+        and vagrant_projects_dir is defined
+        and vagrant_projects_dir
+        and vagrant_projects is defined
+        and vagrant_projects | length > 0
+        and not vagrant_install_os_dependencies

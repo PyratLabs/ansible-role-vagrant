@@ -1,0 +1,23 @@
+---
+
+- name: Ensure vagrant_projects_dir exists
+  file:
+    path: "{{ vagrant_projects_dir }}"
+    state: directory
+  when: vagrant_projects_dir is defined and vagrant_projects_dir
+
+- name: Ensure Vagrant release package is defined
+  set_fact:
+    vagrant_package_path: "{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.rpm"
+
+- name: Ensure Vagrant is installed (YUM)
+  yum:
+    name: "{{ vagrant_release_baseurl }}/{{ vagrant_package_path }}"
+    state: installed
+  when: ansible_pkg_mgr == "yum"
+
+- name: Ensure Vagrant is installed (DNF)
+  dnf:
+    name: "{{ vagrant_release_baseurl }}/{{ vagrant_package_path }}"
+    state: installed
+  when: ansible_pkg_mgr == "dnf"

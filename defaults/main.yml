@@ -1,0 +1,13 @@
+---
+
+# Use a specific version of Vagrant, eg. `2.2.6`. Specify `false` for latest.
+vagrant_version: false
+
+# Allow role to install OS dependencies.
+vagrant_install_os_dependencies: false
+
+# Directory to put vagrant projects. Specify `false` to skip.
+vagrant_projects_dir: "{{ ansible_user_dir }}/projects"
+
+# List of vagrant projects to be cloned with `git`. See notes in README.md
+# vagrant_projects: []
